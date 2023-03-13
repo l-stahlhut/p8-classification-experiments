@@ -62,8 +62,8 @@ s2 = Sentence(sentence2)
 s3 = Sentence(sentence3)
 
 # Case 1: lemmatize; remove punc and stopwords from entire sentence
-print(s1.sentence)
-print(s1.preprocessed)
+#print(s1.sentence)
+#print(s1.preprocessed)
 
 # TODO: Case 2.1.: Extract main clauses
 
