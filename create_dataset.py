@@ -45,16 +45,16 @@ class AnnotatedTexts():
         """Returns a dictionary with steps as keys and list of tagged sentences as values.
         There are 11 classes with class 0 = not annotated."""
         steps_dictionary = {
-            1: 'step1c_korr.txt',  # TODO change if we get another version of these files
-            2: 'step1d_korr.txt',
-            3: 'step1e_korr.txt',
-            4: 'step2a_korr.txt',
-            5: 'step2c_korr.txt',
-            6: 'step3a_korr.txt',
-            7: 'step3b_korr.txt',
-            8: 'step3d_korr.txt',
-            9: 'step3e_korr.txt',
-            10: 'step3g_korr.txt'
+            '1c': 'step1c_korr.txt',  # TODO change if we get another version of these files
+            '1d': 'step1d_korr.txt',
+            '1e': 'step1e_korr.txt',
+            '2a': 'step2a_korr.txt',
+            '2c': 'step2c_korr.txt',
+            '3a': 'step3a_korr.txt',
+            '3b': 'step3b_korr.txt',
+            '3d': 'step3d_korr.txt',
+            '3e': 'step3e_korr.txt',
+            '3g': 'step3g_korr.txt'
         }
         annotated_sentences = {}
 
@@ -72,7 +72,7 @@ class AnnotatedTexts():
         """Return a list of Tuples (filename, annotated sentences) where annotated sentences are a list of tuples with
         (sentence, label)"""
         annotated_texts = []
-        text_id = 1  # change filenames to integers
+        #text_id = 1  # change filenames to integers
 
         for text in self.input_texts:
             filename, sentences = text
@@ -83,8 +83,8 @@ class AnnotatedTexts():
                     if s in tagged_sents:
                         annotated_sentences[sentences.index(s)] = (s, tag)
                         break
-            annotated_texts.append((text_id, annotated_sentences))  # integer replaces filename
-            text_id += 1
+            annotated_texts.append((text[0], annotated_sentences))  # todo replace text name with id perhaps
+            #text_id += 1
 
         return annotated_texts
 
@@ -150,9 +150,9 @@ def train_test_split(df, train_path, val_path, test_path):
 
     return None
 
-
 def main():
     a = AnnotatedTexts()
+
     # 1) Write annotated data to csv
     #annotated_data = a.write_annotated_text_to_df() # df with text_id_, sentence, label
     #annotated_data.to_csv(os.path.join(a.data_directory, "data_" + a.iteration + ".csv"), index=False, sep=',')
